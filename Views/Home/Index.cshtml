@@ -2,7 +2,22 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="app-content-movie app-container">
+    <div class="app-content-wrapper">
+        <h2 class="app-content-heading">Phim Chiếu Rạp Phổ Biến</h2>
+        <div class="movie-list popular"></div>
+    </div>
+    <div class="app-content-wrapper">
+        <h2 class="app-content-heading">Phim Chiếu Rạp Có Điểm Đánh Giá Cao Nhất</h2>
+        <div class="movie-list top-rated"></div>
+    </div>
+    <div class="app-content-wrapper">
+        <h2 class="app-content-heading">Phim Chiếu Rạp Sắp Ra Mắt</h2>
+        <div class="movie-list up-coming"></div>
+    </div>
 </div>
+
+
+@section Scripts {
+    <script src="~/js/home.js" type="module" asp-append-version="true"></script>
+}
