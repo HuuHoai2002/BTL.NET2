@@ -13,7 +13,7 @@ public class MoviesController : Controller
   }
 
   [HttpGet]
-  public IActionResult Index()
+  public IActionResult Index(string id)
   {
     return View();
   }

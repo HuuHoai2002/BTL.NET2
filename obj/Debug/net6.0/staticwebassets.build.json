@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hkZm4eK2NwgW06fDGOYuDdLoYldgT2ZdiKtw6PXvf7E=",
+  "Hash": "3kn6N8ISMdD1sjlYzBSXDV56mrqigg4bvbxzh4jQfNY=",
   "Source": "BTL.NET2",
   "BasePath": "_content/BTL.NET2",
   "Mode": "Default",
@@ -119,6 +119,23 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\js\\common\\index.js",
+      "SourceId": "BTL.NET2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\",
+      "BasePath": "_content/BTL.NET2",
+      "RelativePath": "js/common/index.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\common\\index.js"
+    },
+    {
       "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\js\\config\\index.js",
       "SourceId": "BTL.NET2",
       "SourceType": "Discovered",
@@ -168,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\utils\\fetchData.js"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\js\\utils\\getParams.js",
+      "SourceId": "BTL.NET2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\",
+      "BasePath": "_content/BTL.NET2",
+      "RelativePath": "js/utils/getParams.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\utils\\getParams.js"
     },
     {
       "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\js\\utils\\render.js",

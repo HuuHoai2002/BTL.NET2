@@ -69,7 +69,7 @@ export const renderListMovie = async (url, root) => {
     contents = data
       ?.map((content) => {
         return `
-          <a href=${`details.php?type=${content.name ? "tv" : "movie"}&id=${
+          <a href=${`/Movies?type=${content.name ? "tv" : "movie"}&id=${
             content.id
           }`} class="movie-item">
               <div class="movie-image">
