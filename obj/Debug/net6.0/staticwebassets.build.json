@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QbMcYbcjHGLvEK5CiysUFotPooCxL2fcdDrgTL/jzhI=",
+  "Hash": "IDXHPOeUB25PBrgMf1dnPb+v6ATlRInDsyIINUaonOY=",
   "Source": "BTL.NET2",
   "BasePath": "_content/BTL.NET2",
   "Mode": "Default",
@@ -153,12 +153,12 @@
       "OriginalItemSpec": "wwwroot\\js\\config\\index.js"
     },
     {
-      "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\js\\detail.js",
+      "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\js\\details.js",
       "SourceId": "BTL.NET2",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\",
       "BasePath": "_content/BTL.NET2",
-      "RelativePath": "js/detail.js",
+      "RelativePath": "js/details.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -167,7 +167,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\detail.js"
+      "OriginalItemSpec": "wwwroot\\js\\details.js"
     },
     {
       "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\js\\home.js",

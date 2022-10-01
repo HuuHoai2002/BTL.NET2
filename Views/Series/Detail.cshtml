@@ -3,14 +3,18 @@
 *@
 
 @{
-    ViewData["Title"] = "Detail";
+    ViewData["Title"] = "Details";
 }
 
-<div class="app-container">
-    <h1 class="">Series detail page</h1>
+<div class="app-movie-details app-container">
+</div>
+<div class="app-content-movie app-container">
+    <div class="app-content-wrapper">
+        <h2 class="app-content-heading">Phim Tương Tự</h2>
+        <div class="movie-list"></div>
+    </div>
 </div>
 
-
 @section Scripts {
-
+    <script src="~/js/details.js" type="module" asp-append-version="true"></script>
 }
