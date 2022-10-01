@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@* 
+  @author: Nghiêm Hữu Hoài
+*@
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -40,17 +44,16 @@
           <div class="app-header-content">
             <div class="content-list">
               <a asp-area="" asp-controller="Home" asp-action="Index" class="content-link content-active">Trang Chủ</a>
-              <a asp-area="" asp-controller="Movies" asp-route-id="10" asp-action="Index" class="content-link">Phim Chiếu Rạp</a>
-              @* <a asp-area="" asp-controller="Home" asp-action="Index" class="content-link">Phim Bộ</a>
-              <a asp-area="" asp-controller="Home" asp-action="Index" class="content-link">Khuyến Mãi</a>
-              <a asp-area="" asp-controller="Home" asp-action="Index" class="content-link">Hỗ Trợ</a> *@
+              <a asp-area="" asp-controller="Movies" asp-action="Index" class="content-link">Phim Chiếu Rạp</a>
+              <a asp-area="" asp-controller="Series" asp-action="Index" class="content-link">Phim Bộ</a>
             </div>
           </div>
         </div>
         <div class="app-header-right">
-          <div class="app-header-search">
+          <form action="/Search" class="app-header-search">
             <input
               type="text"
+              name="keyword"
               class="app-search-input"
               placeholder="Bạn muốn xem gì hôm nay?"
             />
@@ -71,9 +74,9 @@
                 />
               </svg>
             </a>
-          </div>
+          </form>
           <div class="app-header-users">
-            <a href="/frontend/signup.html" class="app-header-signin"
+            <a href="/Login" class="app-header-signin"
               >Đăng Nhập</a
             >
             <!-- <div class="users">
@@ -93,8 +96,8 @@
       @RenderBody()
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="border-top footer text-muted" style="margin-top: 40px;">
+        <div class="app-container">
             &copy; 2022 - BTL.NET2
         </div>
     </footer>

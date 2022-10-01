@@ -33,9 +33,15 @@ export const renderAppBanner = async (url, root) => {
                   ${content.overview || "Chưa có mô tả chi tiết"}
                 </p>
                 <div class="content-actions">
-                  <a href=${
-                    `watch.php?type=movie&id=` + content.id
-                  } class="base-btn bg-primary"
+                  <a href=${`${
+                    content.title
+                      ? `/Movies/Watch?id=${
+                          content.id
+                        }&timestamp=${new Date().getTime()}`
+                      : `/Series/Watch?id=${
+                          content.id
+                        }&episode=1&timestamp=${new Date().getTime()}`
+                  }`} class="base-btn bg-primary"
                   ><svg
                       width="24"
                       height="24"
@@ -59,18 +65,30 @@ export const renderAppBanner = async (url, root) => {
     .join("");
   root.innerHTML = contents;
 };
-export const renderListMovie = async (url, root) => {
+
+const renderButtonLoadmore = (page, is_series) => {
+  return `
+      <a class="base-btn bg-primary" href=${`/${
+        is_series ? "Series" : "Movies"
+      }?page=${page + 1}`}>Xem thêm</a>
+  `;
+};
+
+export const renderListMovie = async (url, root, page) => {
   const data = await fetchData(url);
 
   let contents =
     "<h1 style='font-weigth: 500; font-size: 20px; color: var(--red)'>Không tìm thấy bộ phim nào</h1>";
 
   if (data.length > 0) {
+    const is_series = data[0].name ? true : false;
     contents = data
       ?.map((content) => {
         return `
-          <a href=${`/Movies?type=${content.name ? "tv" : "movie"}&id=${
-            content.id
+          <a href=${`${
+            content.title
+              ? `/Movies/Detail?id=${content.id}`
+              : `/Series/Detail?id=${content.id}`
           }`} class="movie-item">
               <div class="movie-image">
                 <img src=${
@@ -89,9 +107,14 @@ export const renderListMovie = async (url, root) => {
         `;
       })
       .join("");
+    root.innerHTML = contents;
+    if (document.querySelector(".next-page")) {
+      document.querySelector(".next-page").innerHTML = renderButtonLoadmore(
+        page,
+        is_series
+      );
+    }
   }
-
-  root.innerHTML = contents;
 };
 
 export const renderMovieDetails = async (url, root) => {
@@ -144,9 +167,15 @@ export const renderMovieDetails = async (url, root) => {
             </div>
           </div>
           <div class="actions">
-            <a href=${`watch.php?type=${data.name ? "tv" : "movie"}&id=${
-              data.id
-            }${data.name ? "&episode=1" : ""}`} class="base-btn bg-primary">
+            <a href=${`${
+              data.title
+                ? `/Movies/Watch?id=${
+                    data.id
+                  }&timestamp=${new Date().getTime()}`
+                : `/Series/Watch?id=${
+                    data.id
+                  }&episode=1&timestamp=${new Date().getTime()}`
+            }`} class="base-btn bg-primary">
               <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 3v18a1 1 0 0 0 1.54.841l14-9a1 1 0 0 0 0-1.682l-14-9A1 1 0 0 0 5 3zm2 1.832L18.15 12 7 19.167V4.832z" fill="#FFF" fill-rule="evenodd"></path>
               </svg>

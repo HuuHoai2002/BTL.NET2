@@ -1,4 +1,8 @@
-﻿using System.Diagnostics;
+﻿/**
+ * @author: Nghiêm Hữu Hoài
+ */
+
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using BTL.NET2.Models;
 

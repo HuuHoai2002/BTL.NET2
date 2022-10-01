@@ -7,29 +7,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BTL.NET2.Controllers;
 
-public class MoviesController : Controller
+public class SearchController : Controller
 {
-  private readonly ILogger<MoviesController> _logger;
+  private readonly ILogger<SearchController> _logger;
 
-  public MoviesController(ILogger<MoviesController> logger)
+  public SearchController(ILogger<SearchController> logger)
   {
     _logger = logger;
   }
 
   [HttpGet]
   public IActionResult Index()
-  {
-    return View();
-  }
-
-  [HttpGet]
-  public IActionResult Detail()
-  {
-    return View();
-  }
-
-  [HttpGet]
-  public IActionResult Watch()
   {
     return View();
   }
