@@ -545,3 +545,180 @@
 .actions {
   margin-top: auto;
 }
+
+/* Watch */
+
+.app-play-movie {
+  padding-bottom: 30px;
+  box-sizing: border-box;
+}
+
+.play-movie-content {
+  margin-top: 30px;
+  height: 520px;
+  display: flex;
+  align-items: start;
+  gap: 20px;
+  background-color: transparent;
+}
+
+.play-movie-frame {
+  width: 74%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.play-sidebar {
+  flex: 1;
+  height: 100%;
+  background-color: var(--sidebar);
+  border: 1px solid var(--border);
+  position: relative;
+}
+.movie-watching-info {
+  padding: 12px;
+  background-color: var(--border);
+}
+.watching-title {
+  font-weight: 500;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+.watching-episode {
+  margin-top: 15px;
+  font-size: 14px;
+  color: var(--label);
+}
+.list-episodes,
+.recommendations {
+  padding: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  overflow-y: overlay;
+  background-color: var(--primary);
+}
+.list-episodes::-webkit-scrollbar {
+  width: 8px;
+}
+
+.list-episodes::-webkit-scrollbar-track {
+  background-color: var(--sidebar);
+}
+
+.list-episodes::-webkit-scrollbar-thumb {
+  background-color: var(--label);
+  border-radius: 10px;
+}
+.recommendations::-webkit-scrollbar {
+  width: 8px;
+}
+
+.recommendations::-webkit-scrollbar-track {
+  background-color: var(--sidebar);
+}
+
+.recommendations::-webkit-scrollbar-thumb {
+  background-color: var(--label);
+  border-radius: 10px;
+}
+
+.episode {
+  text-decoration: none;
+  height: 50px;
+  width: 60px;
+  background-color: var(--border);
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+  color: white;
+}
+.episode-active {
+  text-decoration: none;
+  height: 50px;
+  width: 60px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+  color: white;
+  background-color: var(--blue);
+}
+.episode-active:hover {
+  color: white !important;
+}
+.episode:hover {
+  background-color: var(--blue);
+  color: white !important;
+}
+
+.movie-recommendations-item {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  margin-bottom: 5px;
+  position: relative;
+  /* z-index: -1; */
+}
+.movie-recommendations-item > img {
+  width: 100px;
+  height: 150px;
+  border-radius: 6px;
+}
+.movie-recommendations-info {
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+}
+.movie-recommendations-info > .title {
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+.movie-recommendations-info .vote {
+  max-width: 60px;
+  flex-shrink: 0;
+  display: flex;
+  padding: 5px 10px;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  margin-top: 10px;
+  font-size: 12px;
+  background-color: rgba(255, 240, 0, 0.1);
+}
+.movie-recommendations-info .button {
+  text-decoration: none;
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  background-color: var(--blue);
+  color: white;
+  font-weight: 500;
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
