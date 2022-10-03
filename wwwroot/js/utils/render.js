@@ -209,9 +209,9 @@ export const renderMovieRecommendations = async (url) => {
           </svg>
         </div>
           <div style="margin-top: auto">
-            <a href=${`watch.php?type=${item.name ? "tv" : "movie"}&id=${
+            <a href=${`?id=${
               item.id
-            }${item.name ? "&episode=1" : ""}`} class="button">Xem ngay</a>
+            }&timestamp=${new Date().getTime()}`} class="button">Xem ngay</a>
           </div>
         </div>
       </div>
