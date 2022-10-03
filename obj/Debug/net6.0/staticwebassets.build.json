@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IDXHPOeUB25PBrgMf1dnPb+v6ATlRInDsyIINUaonOY=",
+  "Hash": "Iy8eKDba/qnda4XllTrxfYUW1Ec2INR2p/22qLoQBDc=",
   "Source": "BTL.NET2",
   "BasePath": "_content/BTL.NET2",
   "Mode": "Default",
@@ -16,40 +16,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\obj\\Debug\\net6.0\\scopedcss\\bundle\\BTL.NET2.styles.css",
-      "SourceId": "BTL.NET2",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/BTL.NET2",
-      "RelativePath": "BTL.NET2.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\obj\\Debug\\net6.0\\scopedcss\\bundle\\BTL.NET2.styles.css"
-    },
-    {
-      "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\BTL.NET2.bundle.scp.css",
-      "SourceId": "BTL.NET2",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/BTL.NET2",
-      "RelativePath": "BTL.NET2.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\BTL.NET2.bundle.scp.css"
-    },
     {
       "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\css\\base.css",
       "SourceId": "BTL.NET2",
@@ -321,6 +287,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\utils\\setTitle.js"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\js\\utils\\toggle.js",
+      "SourceId": "BTL.NET2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\",
+      "BasePath": "_content/BTL.NET2",
+      "RelativePath": "js/utils/toggle.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\utils\\toggle.js"
     },
     {
       "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\js\\watch.js",
