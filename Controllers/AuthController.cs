@@ -35,7 +35,7 @@ public class AuthController : Controller
     return View();
   }
   [HttpPost]
-  public IActionResult Register(string username, string password)
+  public IActionResult Register(string email, string password)
   {
     return View();
   }
