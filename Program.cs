@@ -1,19 +1,14 @@
-// using Microsoft.EntityFrameworkCore;
-// using ContactManager.Data;
+using BTL.NET2.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// set connect to database
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connectionString));
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-// builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//     options.UseSqlServer(connectionString));
-// builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-// builder.Services.AddDefaultIdentity<IdentityUser>(
-//     options => options.SignIn.RequireConfirmedAccount = true)
-//     .AddRoles<IdentityRole>()
-//     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 var app = builder.Build();
 

@@ -8,73 +8,73 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BTL.NET2
 build_property.RootNamespace = BTL.NET2
-build_property.ProjectDir = C:\Users\Admin\OneDrive\BTL\BTL.NET2\
+build_property.ProjectDir = c:\Users\Admin\OneDrive\BTL\BTL.NET2\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Admin\OneDrive\BTL\BTL.NET2
+build_property.MSBuildProjectDirectory = c:\Users\Admin\OneDrive\BTL\BTL.NET2
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Auth/Login.cshtml]
+[c:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Auth/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Auth/Register.cshtml]
+[c:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Auth/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Home/Index.cshtml]
+[c:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Movies/Detail.cshtml]
+[c:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Movies/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVzXERldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Movies/Index.cshtml]
+[c:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Movies/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Movies/Watch.cshtml]
+[c:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Movies/Watch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVzXFdhdGNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Search/Index.cshtml]
+[c:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Search/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Series/Detail.cshtml]
+[c:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Series/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VyaWVzXERldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Series/Index.cshtml]
+[c:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Series/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VyaWVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Series/Watch.cshtml]
+[c:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Series/Watch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VyaWVzXFdhdGNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Shared/Error.cshtml]
+[c:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Shared/_AuthLayout.cshtml]
+[c:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Shared/_AuthLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BdXRoTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Shared/_Layout.cshtml]
+[c:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Shared/_ValidationScriptsPartial.cshtml]
+[c:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/_ViewImports.cshtml]
+[c:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/_ViewStart.cshtml]
+[c:/Users/Admin/OneDrive/BTL/BTL.NET2/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
