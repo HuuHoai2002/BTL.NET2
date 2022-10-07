@@ -69,6 +69,16 @@ const renderSidebar = async () => {
     }
   `;
   sidebar.innerHTML = contents;
+
+  const episode_active = $(".episode-active");
+  if (episode_active) {
+    episode_active.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    });
+  }
+
   setTitle(`Đang xem: ${data.name || data.title}`);
 };
 

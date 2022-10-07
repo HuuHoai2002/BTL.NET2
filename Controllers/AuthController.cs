@@ -2,19 +2,24 @@
  * @author: Nghiêm Hữu Hoài
  */
 
+using BTL.NET2.Models;
+using BTL.NET2.Data;
+
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using BTL.NET2.Models;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace BTL.NET2.Controllers;
 
 public class AuthController : Controller
 {
-  private readonly ILogger<AuthController> _logger;
-
-  public AuthController(ILogger<AuthController> logger)
+  // set connect to database
+  private readonly ApplicationDbContext _context;
+  // constructor
+  public AuthController(ApplicationDbContext context)
   {
-    _logger = logger;
+    _context = context;
   }
 
   [HttpGet]
@@ -22,22 +27,51 @@ public class AuthController : Controller
   {
     return View();
   }
-  [HttpPost]
-  public IActionResult Login(string email, string password)
-  {
-    ViewBag.email = email;
-    ViewBag.password = password;
-    return View();
-  }
-  [HttpGet]
+
+[HttpGet]
   public IActionResult Register()
   {
     return View();
   }
+
   [HttpPost]
-  public IActionResult Register(string email, string password)
+  public async Task<IActionResult> Login(User user)
   {
-    return View();
+    var result = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email && u.Password == user.Password);
+    // save user to session
+    if (result != null)
+    {
+      HttpContext.Session.SetString("user", JsonConvert.SerializeObject(result));
+
+      return RedirectToAction("Index", "Home");
+    }
+    else
+    {
+      return RedirectToAction("Login", "Auth");
+    }
+  }
+
+
+  [HttpPost]
+  public async Task<IActionResult> Register(User user)
+  {
+    if (ModelState.IsValid)
+    {
+      // check user is exist
+      var userIsExist = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+      if (userIsExist == null)
+      {
+        // add user to database        
+        _context.Users.Add(user);
+        await _context.SaveChangesAsync();
+        return RedirectToAction(nameof(Login));
+      }
+      else
+      {
+        ModelState.AddModelError("", "Email is exist");
+      }
+    }
+    return View(user);
   }
 
   [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

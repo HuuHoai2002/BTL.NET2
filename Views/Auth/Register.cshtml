@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_AuthLayout.cshtml";
 }
 
-<form method="post" autocomplete="off" class="app-form">
+<form asp-action="Register" autocomplete="off" class="app-form">
     <div class="app-form-head">
         <h2 class="form-heading">Đăng Ký</h2>
     </div>
@@ -23,18 +23,18 @@
             ?> *@
         <div class="form-field">
             <label for="email" class="field-label">Họ và tên</label>
-            <input type="text" class="field-input" placeholder="Nhập vào họ và tên" id="name" name="name" required />
+            <input type="text" class="field-input" placeholder="Nhập vào họ và tên" id="name" name="Name" required />
         </div>
         <div class="form-field">
             <label for="email" class="field-label">Email</label>
-            <input type="email" class="field-input" placeholder="Nhập vào địa chỉ email" id="email" name="email"
+            <input type="email" class="field-input" placeholder="Nhập vào địa chỉ email" id="email" name="Email"
                 required />
         </div>
         <div class="form-field">
             <label for="password" class="field-label">Mật khẩu</label>
             <div style="position: relative">
                 <input type="password" class="field-input field-input-password" placeholder="Nhập vào mật khẩu"
-                    id="password" name="password" required />
+                    id="password" name="Password" required />
                 <div class="">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
                         class="field-icons eye-off">
