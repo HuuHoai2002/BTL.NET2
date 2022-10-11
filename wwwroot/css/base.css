@@ -38,7 +38,7 @@ body::-webkit-scrollbar-thumb {
   box-sizing: border-box;
   min-height: 100vh;
   color: white;
-  user-select: none;
+  /* user-select: none; */
 }
 
 .app-container {

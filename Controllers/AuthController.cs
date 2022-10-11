@@ -28,7 +28,7 @@ public class AuthController : Controller
     return View();
   }
 
-[HttpGet]
+  [HttpGet]
   public IActionResult Register()
   {
     return View();
@@ -47,10 +47,10 @@ public class AuthController : Controller
     }
     else
     {
-      return RedirectToAction("Login", "Auth");
+      ModelState.AddModelError("", "Email hoặc mật khẩu không đúng");
+      return View();
     }
   }
-
 
   [HttpPost]
   public async Task<IActionResult> Register(User user)
@@ -58,8 +58,8 @@ public class AuthController : Controller
     if (ModelState.IsValid)
     {
       // check user is exist
-      var userIsExist = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
-      if (userIsExist == null)
+      var result = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+      if (result == null)
       {
         // add user to database        
         _context.Users.Add(user);
@@ -68,7 +68,8 @@ public class AuthController : Controller
       }
       else
       {
-        ModelState.AddModelError("", "Email is exist");
+        ModelState.AddModelError("", "Email đã tồn tại");
+        return View();
       }
     }
     return View(user);
