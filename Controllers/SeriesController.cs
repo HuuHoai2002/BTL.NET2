@@ -3,6 +3,8 @@
  */
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using BTL.NET2.Data;
 
 
 namespace BTL.NET2.Controllers;
@@ -11,9 +13,12 @@ public class SeriesController : Controller
 {
   private readonly ILogger<SeriesController> _logger;
 
-  public SeriesController(ILogger<SeriesController> logger)
+  private readonly ApplicationDbContext _context;
+
+  public SeriesController(ILogger<SeriesController> logger, ApplicationDbContext context)
   {
     _logger = logger;
+    _context = context;
   }
 
   [HttpGet]
@@ -29,9 +34,10 @@ public class SeriesController : Controller
   }
 
   [HttpGet]
-  public IActionResult Watch()
+  public async Task<IActionResult> Watch([FromQuery] string id)
   {
-    return View();
-  }
+    var comments = await _context.Comments.Where(c => c.MovieId == id && c.MovieType == "serie").ToListAsync();
 
+    return View(comments);
+  }
 }

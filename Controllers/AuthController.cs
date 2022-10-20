@@ -4,6 +4,7 @@
 
 using BTL.NET2.Models;
 using BTL.NET2.Data;
+using BTL.NET2.Utils;
 
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,8 @@ public class AuthController : Controller
 {
   // set connect to database
   private readonly ApplicationDbContext _context;
+
+  GenerateID generateID = new GenerateID();
   // constructor
   public AuthController(ApplicationDbContext context)
   {
@@ -41,8 +44,14 @@ public class AuthController : Controller
     // save user to session
     if (result != null)
     {
-      HttpContext.Session.SetString("user", JsonConvert.SerializeObject(result));
-
+      if (result.Name != null && result.Email != null)
+      {
+        HttpContext.Session.SetString("username", result.Name);
+        HttpContext.Session.SetString("email", result.Email);
+        HttpContext.Session.SetString("userid", result.Id.ToString());
+        HttpContext.Session.SetString("role", result.Role ?? "user");
+        return RedirectToAction("Index", "Home");
+      }
       return RedirectToAction("Index", "Home");
     }
     else
@@ -61,8 +70,19 @@ public class AuthController : Controller
       var result = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
       if (result == null)
       {
-        // add user to database        
-        _context.Users.Add(user);
+        // add user to database     
+        // hash password
+        _context.Users.Add(new Models.User
+        {
+          Id = generateID.createID(),
+          Email = user.Email,
+          Password = user.Password,
+          Name = user.Name,
+          Phone = user.Phone,
+          Address = user.Address,
+          Role = "user",
+          CreatedAt = DateTime.Now
+        });
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Login));
       }

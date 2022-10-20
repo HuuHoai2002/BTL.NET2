@@ -17,4 +17,4 @@ async function Main() {
   await renderListMovie(similar_url, movie_similar);
 }
 
-Main();
+window.addEventListener("DOMContentLoaded", Main);

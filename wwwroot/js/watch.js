@@ -71,6 +71,7 @@ const renderSidebar = async () => {
   sidebar.innerHTML = contents;
 
   const episode_active = $(".episode-active");
+
   if (episode_active) {
     episode_active.scrollIntoView({
       behavior: "smooth",
@@ -87,9 +88,10 @@ async function Main() {
     frame.innerHTML =
       "<h1 style='padding: 12px 0; color: var(--red); font-size: 20px'>type chỉ có thể là movie hoặc tv</h1>";
   } else {
-    await renderFrame();
+    // await renderFrame();
     await renderSidebar();
     await renderListMovie(recommendations_url, movie_recommendations);
   }
 }
-Main();
+
+window.addEventListener("DOMContentLoaded", Main);

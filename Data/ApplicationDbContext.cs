@@ -12,5 +12,6 @@ namespace BTL.NET2.Data
     }
 
     public DbSet<User> Users { get; set; }
+    public DbSet<Comment> Comments { get; set; }
   }
 }

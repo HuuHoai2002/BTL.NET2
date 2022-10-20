@@ -1,10 +1,15 @@
-@* 
+@*
     @author: Nghiêm Hữu Hoài
 *@
 
 @{
     ViewData["Title"] = "Details";
 }
+
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@model IEnumerable<BTL.NET2.Models.Comment>
 
 <div class="app-play-movie app-container">
     <div class="play-movie-content">
@@ -14,6 +19,81 @@
     </div>
 </div>
 
+<div class="app-comments container">
+    <h3 class="app-comments-title">Bình luận</h3>
+    <form method="post" asp-action="CreateComment" asp-controller="Comment" class="app-comment-content">
+        @if (@Context.Request.Path.Value != null)
+        {
+            <input type="text" name="MovieType" style="display: none" value='serie'>
+        }
+        <input type="text" name="MovieId" style="display: none" value='@Context.Request.Query["id"]'>
+        <input type="text" name="Author" style="display: none"
+            value='@HttpContextAccessor.HttpContext.Session.GetString("username")'>
+        <input type="text" name="AuthorId" style="display: none"
+            value='@HttpContextAccessor.HttpContext.Session.GetString("userid")'>
+        <div class="comments-quantity">
+            <span>
+                @{
+                    if (Model.Count() > 0)
+                    {
+                        <span class="number">@Model.Count() bình luận</span>
+                    }
+                    else
+                    {
+                        <span class="number">Chưa có bình luận nào</span>
+                    }
+                }
+            </span>
+            <span>Cập nhật gần nhất , hôm nay
+                <span class="current-date">
+                    @DateTime.Now.ToString("dd-MM-yyyy")
+                </span>
+            </span>
+        </div>
+        <div class="users-post-comments">
+            <div class="users">
+                @* <img src="<?= $_SESSION['user']['user_avatar'] ?>" alt="" class="user-avatar"> *@
+            </div>
+            <div class="input-comments">
+                <textarea name="Content" placeholder="Viết bình luận ..." required></textarea>
+                <button type="submit" class="btn-send-comment">
+                    <svg viewBox="0 0 16 16" style="transform: rotate(45deg)" width="24px" height="24px"
+                        focusable="false" roles="img" aria-label="cursor fill" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor">
+                        <g>
+                            <path
+                                d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z">
+                            </path>
+                        </g>
+                    </svg></button>
+            </div>
+        </div>
+        <div class="list-comments">
+            @foreach (var item in Model)
+            {
+                <div class="comment">
+                    <div class="comment-content">
+                        <div class="comment-author">
+                            <img src="' . $comment['user_avatar'] . '" alt="" class="user-avatar">
+                        </div>
+                        <div class="comment-text">
+                            <div class="comment-author">
+                                <a href="/User?id=@item.AuthorId&show_info=true" class="author-name">@item.Author</a>
+                                <span class="comment-date">
+                                    @item.CreatedAt
+                                </span>
+                            </div>
+                            <p>
+                                @item.Content
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </form>
+</div>
+
 @section Scripts {
-    <script src="~/js/watch.js" type="module" asp-append-version="true"></script>
+<script src="~/js/watch.js" type="module" asp-append-version="true"></script>
 }

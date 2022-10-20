@@ -16,4 +16,5 @@ async function Main() {
     setTitle(`Kết quả tìm kiếm cho: ${keyword}`);
   }
 }
-Main();
+
+window.addEventListener("DOMContentLoaded", Main);

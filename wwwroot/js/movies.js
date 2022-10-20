@@ -14,4 +14,5 @@ async function Main() {
   await renderListMovie(popular_url, movie_list, Number(page));
   setTitle(`Phim chiếu rạp | trang ${page}`);
 }
-Main();
+
+window.addEventListener("DOMContentLoaded", Main);
