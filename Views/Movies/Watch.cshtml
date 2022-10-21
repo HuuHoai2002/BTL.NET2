@@ -2,14 +2,15 @@
     @author: Nghiêm Hữu Hoài
 *@
 
-@{
-    ViewData["Title"] = "Details";
-}
-
 @using Microsoft.AspNetCore.Http
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @model IEnumerable<BTL.NET2.Models.Comment>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
 
 <div class="app-play-movie app-container">
     <div class="play-movie-content">
@@ -51,22 +52,35 @@
             </span>
         </div>
         <div class="users-post-comments">
-            <div class="users">
-                @* <img src="<?= $_SESSION['user']['user_avatar'] ?>" alt="" class="user-avatar"> *@
-            </div>
-            <div class="input-comments">
-                <textarea name="Content" placeholder="Viết bình luận ..." required></textarea>
-                <button type="submit" class="btn-send-comment">
-                    <svg viewBox="0 0 16 16" style="transform: rotate(45deg)" width="24px" height="24px"
-                        focusable="false" roles="img" aria-label="cursor fill" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor">
-                        <g>
-                            <path
-                                d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z">
-                            </path>
-                        </g>
-                    </svg></button>
-            </div>
+            @{
+                string email = HttpContextAccessor.HttpContext.Session.GetString("email");
+
+                if (email != null)
+                {
+                    <div class="users">
+                        @* <img src="<?= $_SESSION['user']['user_avatar'] ?>" alt="" class="user-avatar"> *@
+                    </div>
+                    <div class="input-comments">
+                        <textarea name="Content" placeholder="Viết bình luận ..." required></textarea>
+                        <button type="submit" class="btn-send-comment">
+                            <svg viewBox="0 0 16 16" style="transform: rotate(45deg)" width="24px" height="24px"
+                            focusable="false" roles="img" aria-label="cursor fill" xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor">
+                                <g>
+                                    <path
+                                    d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z">
+                                    </path>
+                                </g>
+                            </svg></button>
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        <a href="/Auth/Login?redirect=true" class="btn btn-primary">Đăng nhập để bình luận</a>
+                    </div>
+                }
+            }
         </div>
         <div class="list-comments">
             @foreach (var item in Model)

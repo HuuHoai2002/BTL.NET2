@@ -38,7 +38,7 @@ public class AuthController : Controller
   }
 
   [HttpPost]
-  public async Task<IActionResult> Login(User user)
+  public async Task<IActionResult> Login(User user, [FromQuery] string redirect)
   {
     var result = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email && u.Password == user.Password);
     // save user to session
@@ -50,6 +50,10 @@ public class AuthController : Controller
         HttpContext.Session.SetString("email", result.Email);
         HttpContext.Session.SetString("userid", result.Id.ToString());
         HttpContext.Session.SetString("role", result.Role ?? "user");
+        if (redirect != null)
+        {
+          return Redirect(Request.Headers["Referer"].ToString());
+        }
         return RedirectToAction("Index", "Home");
       }
       return RedirectToAction("Index", "Home");
@@ -93,6 +97,51 @@ public class AuthController : Controller
       }
     }
     return View(user);
+  }
+
+  [HttpGet]
+  public IActionResult Logout()
+  {
+    HttpContext.Session.Clear();
+    return RedirectToAction("Index", "Home");
+  }
+
+  [HttpPost]
+  public async Task<IActionResult> Delete(string id)
+  {
+    if (id == null)
+    {
+      return Redirect(Request.Headers["Referer"].ToString());
+    }
+    var user = await _context.Users.FindAsync(id);
+    if (user == null)
+    {
+      return Redirect(Request.Headers["Referer"].ToString());
+    }
+    _context.Users.Remove(user);
+    await _context.SaveChangesAsync();
+    return Redirect(Request.Headers["Referer"].ToString());
+  }
+
+  [HttpPost]
+  public async Task<IActionResult> Update(User user)
+  {
+    if (user == null)
+    {
+      return Redirect(Request.Headers["Referer"].ToString());
+    }
+    var result = await _context.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
+    if (result == null)
+    {
+      return Redirect(Request.Headers["Referer"].ToString());
+    }
+    result.Name = user.Name;
+    result.Phone = user.Phone;
+    result.Address = user.Address;
+    result.Role = user.Role;
+    _context.Users.Update(result);
+    await _context.SaveChangesAsync();
+    return Redirect(Request.Headers["Referer"].ToString());
   }
 
   [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

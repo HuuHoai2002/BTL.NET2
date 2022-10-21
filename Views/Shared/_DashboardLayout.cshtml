@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="~/icons/logo.png" />
+  <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/css/base.css" asp-append-version="true" />
+  <title>@ViewData["Title"] - BTL.NET2 Nhóm 9</title>
+</head>
+
+<body>
+  <div class="d-flex flex-row">
+    <div class="d-flex flex-column flex-shrink-0" style="width: 5rem; background-color: #222b32">
+      <a href="/" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none" title=""
+        data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+        <img src="~/icons/logo.png" alt="">
+      </a>
+      <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+        <li class="nav-item">
+          <a href="#" class="nav-link active py-3" aria-current="page" title="" data-bs-toggle="tooltip"
+            data-bs-placement="right" data-bs-original-title="Home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              style="fill:white;transform: ;msFilter:;">
+              <path
+                d="M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2 7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z">
+              </path>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link py-3" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+            data-bs-original-title="Dashboard">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              style="fill: white;transform: ;msFilter:;">
+              <path
+                d="M4 18h2v4.081L11.101 18H16c1.103 0 2-.897 2-2V8c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2z">
+              </path>
+              <path d="M20 2H8c-1.103 0-2 .897-2 2h12c1.103 0 2 .897 2 2v8c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2z">
+              </path>
+            </svg>
+          </a>
+        </li>
+      </ul>
+      <div class="dropdown border-top border-dark">
+        <a href="#"
+          class="d-flex align-items-center justify-content-center p-3 link-light text-decoration-none dropdown-toggle"
+          id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://github.com/mdo.png" alt="mdo" width="30" height="30" class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser3">
+          <li><a class="dropdown-item" href="#">New project...</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="#">Sign out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-app">
+      <div class="p-3">
+        @RenderBody()
+      </div>
+    </div>
+  </div>
+
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

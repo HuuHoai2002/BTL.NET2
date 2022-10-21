@@ -35,7 +35,7 @@ public class MoviesController : Controller
   [HttpGet]
   public async Task<IActionResult> Watch([FromQuery] string id)
   {
-    var comments = await _context.Comments.Where(c => c.MovieId == id && c.MovieType == "movie").ToListAsync();
+    var comments = await _context.Comments.Where(c => c.MovieId == id && c.MovieType == "movie").OrderByDescending(c => c.CreatedAt).ToListAsync();
 
     return View(comments);
   }

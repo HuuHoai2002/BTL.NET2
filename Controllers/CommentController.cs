@@ -51,7 +51,7 @@ public class CommentController : Controller
       return Redirect(Request.Headers["Referer"].ToString());
     }
     _context.Comments.Remove(comment);
-    _context.SaveChanges();
+    await _context.SaveChangesAsync();
     return Redirect(Request.Headers["Referer"].ToString());
   }
   [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

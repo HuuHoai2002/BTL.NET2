@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Iy8eKDba/qnda4XllTrxfYUW1Ec2INR2p/22qLoQBDc=",
+  "Hash": "0UYmp7ojZFsMDjlJbqU45N4Pl4aRVvWx1xatK5ivy2k=",
   "Source": "BTL.NET2",
   "BasePath": "_content/BTL.NET2",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\icons\\logo.png",
+      "SourceId": "BTL.NET2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\",
+      "BasePath": "_content/BTL.NET2",
+      "RelativePath": "icons/logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icons\\logo.png"
     },
     {
       "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\js\\common\\index.js",
