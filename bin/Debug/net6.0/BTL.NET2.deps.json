@@ -10,7 +10,9 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Design": "6.0.9",
           "Microsoft.EntityFrameworkCore.Sqlite": "6.0.9",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.10"
+          "Microsoft.EntityFrameworkCore.Tools": "6.0.9",
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.10",
+          "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
           "BTL.NET2.dll": {}
@@ -912,6 +914,11 @@
             "assemblyVersion": "6.0.9.0",
             "fileVersion": "6.0.922.41505"
           }
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Tools/6.0.9": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Design": "6.0.9"
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/6.0.0": {
@@ -2496,6 +2503,13 @@
       "sha512": "sha512-yo2m2Tvi0f8SQPBaFTmmO2P+sLNl5Zz23JsV7J85N4AFXyDMvCiS0eza/90HgJ/RgrGssEIC2jvaABRreRKl/g==",
       "path": "microsoft.entityframeworkcore.sqlite.core/6.0.9",
       "hashPath": "microsoft.entityframeworkcore.sqlite.core.6.0.9.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Tools/6.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HqdzDohxXfh7onMfrKxI3qtRu+TF246dNVQ1Yjql7v69CfeKWFyRxLbuNG/ScGh9dZdXHDvNjqXb4Ou9GHflew==",
+      "path": "microsoft.entityframeworkcore.tools/6.0.9",
+      "hashPath": "microsoft.entityframeworkcore.tools.6.0.9.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/6.0.0": {
       "type": "package",
