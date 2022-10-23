@@ -31,8 +31,8 @@ const renderFrame = async () => {
 };
 
 const renderSidebar = async () => {
-  const reponse = await fetch(details_url);
-  const data = await reponse.json();
+  const response = await fetch(details_url);
+  const data = await response.json();
   const contents = `
     <div class="movie-watching-info">
       <h3 class="watching-title">${data.name || data.title}</h3>
@@ -88,7 +88,7 @@ async function Main() {
     frame.innerHTML =
       "<h1 style='padding: 12px 0; color: var(--red); font-size: 20px'>type chỉ có thể là movie hoặc tv</h1>";
   } else {
-    // await renderFrame();
+    await renderFrame();
     await renderSidebar();
     await renderListMovie(recommendations_url, movie_recommendations);
   }

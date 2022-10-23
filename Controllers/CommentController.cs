@@ -29,30 +29,46 @@ public class CommentController : Controller
     {
       return RedirectToAction("Login", "Auth");
     }
-    comment.Id = new GenerateID().createID();
-    comment.CreatedAt = DateTime.Now;
-    comment.UpdatedAt = DateTime.Now;
-    _context.Comments.Add(comment);
-    await _context.SaveChangesAsync();
+    try
+    {
+      comment.Id = new GenerateID().createID();
+      comment.CreatedAt = DateTime.Now;
+      comment.UpdatedAt = DateTime.Now;
+      _context.Comments.Add(comment);
+      await _context.SaveChangesAsync();
 
-    return Redirect(Request.Headers["Referer"].ToString());
+      return Redirect(Request.Headers["Referer"].ToString());
+    }
+    catch (System.Exception)
+    {
+      return Redirect(Request.Headers["Referer"].ToString());
+      throw;
+    }
   }
 
   [HttpPost]
-  public async Task<IActionResult> Delete([FromQuery] string id)
+  public async Task<IActionResult> Delete(string id)
   {
     if (id == null)
     {
       return Redirect(Request.Headers["Referer"].ToString());
     }
-    var comment = await _context.Comments.FindAsync(id);
-    if (comment == null)
+    try
     {
+      var comment = await _context.Comments.FindAsync(id);
+      if (comment == null)
+      {
+        return Redirect(Request.Headers["Referer"].ToString());
+      }
+      _context.Comments.Remove(comment);
+      await _context.SaveChangesAsync();
       return Redirect(Request.Headers["Referer"].ToString());
     }
-    _context.Comments.Remove(comment);
-    await _context.SaveChangesAsync();
-    return Redirect(Request.Headers["Referer"].ToString());
+    catch (System.Exception)
+    {
+      return Redirect(Request.Headers["Referer"].ToString());
+      throw;
+    }
   }
   [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
   public IActionResult Error()

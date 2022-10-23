@@ -1,0 +1,65 @@
+@model BTL.NET2.Models.User
+
+@{
+    ViewData["Title"] = "EditUser";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div>
+    <h2 class="fw-bold py-3">Cập nhật thông tin người dùng</h2>
+    <div class="app-container">
+        <form method="post" asp-action="UpdateInfo" asp-controller="Auth">
+            <div class="row">
+                <input type="hidden" value="@Html.DisplayFor(model => model.Id)" name="Id">
+                <div class="form-field col">
+                    <label for="email" class="field-label">Email</label>
+                    <input type="email" class="field-input" placeholder="Nhập vào địa chỉ email" id="email" name="Email"
+                        required value="@Html.DisplayFor(model => model.Email)" />
+                </div>
+                <div class="form-field col">
+                    <label for="Name" class="field-label">Tên</label>
+                    <input type="text" class="field-input" placeholder="Nhập vào tên" id="Name" name="Name" required
+                        value="@Html.DisplayFor(model => model.Name)" />
+                </div>
+            </div>
+            <div class="row" style="margin-top: 30px;">
+                <div class="form-field col">
+                    <label for="Phone" class="field-label">Số điện thoại</label>
+                    <input type="number" class="field-input" placeholder="Nhập vào số điện thoại" id="Phone"
+                        name="Phone" value="@Html.DisplayFor(model => model.Phone)" />
+                </div>
+                <div class="form-field col">
+                    <label for="Address" class="field-label">Địa chỉ</label>
+                    <input type="text" class="field-input" placeholder="Nhập vào địa chỉ" id="Address" name="Address"
+                        value="@Html.DisplayFor(model => model.Address)" />
+                </div>
+                <div class="form-field col">
+                    <label for="Role" class="field-label">Quyền</label>
+                    <select class="field-input" placeholder="Nhập vào địa chỉ" id="Role" name="Role" required
+                        value="@Html.DisplayFor(model => model.Role)">
+                        @{
+                            string role = Model.Role ?? "";
+                            if (role == "admin")
+                            {
+                                <option value="admin" selected>Admin</option>
+                                <option value="user">User</option>
+                            }
+                            else
+                            {
+                                <option value="user" selected>User</option>
+                                <option value="admin">Admin</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 30px;">
+                <div class="form-field">
+                    <button type="submit" class="btn btn-info text-white">
+                        Cập nhật nguời dùng
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

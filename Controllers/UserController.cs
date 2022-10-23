@@ -26,10 +26,22 @@ public class UserController : Controller
   {
     if (id == null)
     {
-      return Redirect("/");
+      return Redirect(Request.Headers["Referer"].ToString());
     }
-    var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
-    return View(user);
+    try
+    {
+      var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+      if (user == null)
+      {
+        return Redirect(Request.Headers["Referer"].ToString());
+      }
+      return View(user);
+    }
+    catch (System.Exception)
+    {
+      return Redirect(Request.Headers["Referer"].ToString());
+      throw;
+    }
   }
   [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
   public IActionResult Error()

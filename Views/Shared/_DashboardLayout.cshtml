@@ -1,3 +1,7 @@
+@using Microsoft.AspNetCore.Http
+@using BTL.NET2.Utils
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,20 +13,39 @@
   <link rel="icon" type="image/png" sizes="32x32" href="~/icons/logo.png" />
   <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true" />
   <link rel="stylesheet" href="~/css/base.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
   <title>@ViewData["Title"] - BTL.NET2 Nhóm 9</title>
 </head>
 
+<style>
+  .sidebar {
+    position: fixed;
+    background-color: #222b32;
+    z-index: 9999;
+  }
+
+  .custom-text-truncate {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+  }
+</style>
+
 <body>
   <div class="d-flex flex-row">
-    <div class="d-flex flex-column flex-shrink-0" style="width: 5rem; background-color: #222b32">
+    <div class="sidebar d-flex flex-column flex-shrink-0"
+      style="width: 5rem; background-color: '#222b32'; height: 100vh">
       <a href="/" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none" title=""
-        data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+        data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Trang chủ">
         <img src="~/icons/logo.png" alt="">
       </a>
       <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
         <li class="nav-item">
-          <a href="#" class="nav-link active py-3" aria-current="page" title="" data-bs-toggle="tooltip"
-            data-bs-placement="right" data-bs-original-title="Home">
+          <a href="/Dashboard/Users_Manage" class="nav-link py-3" aria-current="page" title="" data-bs-toggle="tooltip"
+            data-bs-placement="right" data-bs-original-title="Quản lý người dùng">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
               style="fill:white;transform: ;msFilter:;">
               <path
@@ -32,8 +55,8 @@
           </a>
         </li>
         <li>
-          <a href="#" class="nav-link py-3" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-            data-bs-original-title="Dashboard">
+          <a href="/Dashboard/Comments_Manage" class="nav-link py-3" title="" data-bs-toggle="tooltip"
+            data-bs-placement="right" data-bs-original-title="Quản lý bình luận">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
               style="fill: white;transform: ;msFilter:;">
               <path
@@ -52,18 +75,16 @@
           <img src="https://github.com/mdo.png" alt="mdo" width="30" height="30" class="rounded-circle">
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser3">
-          <li><a class="dropdown-item" href="#">New project...</a></li>
-          <li><a class="dropdown-item" href="#">Settings</a></li>
-          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><a class="dropdown-item" asp-action="Index" asp-controller="Home">Trang chủ</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
-          <li><a class="dropdown-item" href="#">Sign out</a></li>
+          <li><a class="dropdown-item" asp-action="Logout" asp-controller="Auth">Đăng xuất</a></li>
         </ul>
       </div>
     </div>
     <div class="main-app">
-      <div class="p-3">
+      <div class="p-3" style="margin-left: 5rem;">
         @RenderBody()
       </div>
     </div>
@@ -71,6 +92,21 @@
 
   <script src="~/lib/jquery/dist/jquery.min.js"></script>
   <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    const tooltipList = tooltipTriggerList.map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl))
+
+    const navlist = document.querySelectorAll('.nav-link')
+    const currentUrl = window.location.pathname
+    navlist.forEach((item) => {
+      if (item.href.includes(currentUrl.split('/')[2])) {
+        @* document.querySelector('.nav-link.active').classList.remove('active') *@
+          item.classList.add('active')
+      }
+    })
+  </script>
+
   @await RenderSectionAsync("Scripts", required: false)
 </body>
 

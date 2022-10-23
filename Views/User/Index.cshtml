@@ -1,4 +1,6 @@
 @model BTL.NET2.Models.User
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = Html.DisplayFor(model => model.Name);
@@ -12,7 +14,19 @@
                     src="https://cdn.dribbble.com/users/2400293/screenshots/19060197/media/82d672bd58929b313f4805df5e48d586.png" />
             </div>
             <div class="user-profile-name">
-                <h1>@Html.DisplayFor(model => model.Name)</h1>
+                @{
+                    string id = HttpContextAccessor.HttpContext.Session.GetString("userid");
+                    if (id == Model.Id)
+                    {
+                        <h1>@Html.DisplayFor(model => model.Name)
+                            <span class="text-info">(Tôi)</span>
+                        </h1>
+                    }
+                    else
+                    {
+                        <h1>@Html.DisplayFor(model => model.Name)</h1>
+                    }
+                }
             </div>
         </div>
     </div>

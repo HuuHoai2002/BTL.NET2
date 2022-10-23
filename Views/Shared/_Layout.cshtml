@@ -2,6 +2,10 @@
   @author: Nghiêm Hữu Hoài
 *@
 
+@using Microsoft.AspNetCore.Http
+@using BTL.NET2.Utils
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,6 +49,13 @@
             <a asp-area="" asp-controller="Home" asp-action="Index" class="content-link content-active">Trang Chủ</a>
             <a asp-area="" asp-controller="Movies" asp-action="Index" class="content-link">Phim Chiếu Rạp</a>
             <a asp-area="" asp-controller="Series" asp-action="Index" class="content-link">Phim Bộ</a>
+            @{
+              Authentication auth = new Authentication();
+              if (auth.IsAdmin(HttpContextAccessor.HttpContext))
+              {
+                <a asp-area="" asp-controller="Dashboard" asp-action="Index" class="content-link">Quản Trị</a>
+              }
+            }
           </div>
         </div>
       </div>
@@ -60,11 +71,9 @@
         </form>
         <div class="app-header-users">
           @{
-            @using Microsoft.AspNetCore.Http
-            @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
-
             string email = HttpContextAccessor.HttpContext.Session.GetString("email");
             string name = HttpContextAccessor.HttpContext.Session.GetString("username");
+            string id = HttpContextAccessor.HttpContext.Session.GetString("userid");
             if (email != null)
             {
               <div class='users'>
@@ -78,6 +87,17 @@
                     Xin chào , <span>@name.Split(" ").Last().ToString()</span>
                   </div>
                   <div class='list-action'>
+                    <a href="/User?id=@id&show_info=true" class='action-item'>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                      fill="currentColor">
+                        <path
+                        d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8 0-1.168.258-2.275.709-3.276.154.09.308.182.456.276.396.25.791.5 1.286.688.494.187 1.088.312 1.879.312.792 0 1.386-.125 1.881-.313s.891-.437 1.287-.687.792-.5 1.287-.688c.494-.187 1.088-.312 1.88-.312s1.386.125 1.88.313c.495.187.891.437 1.287.687s.792.5 1.287.688c.178.067.374.122.581.171.191.682.3 1.398.3 2.141 0 4.411-3.589 8-8 8z">
+                        </path>
+                        <circle cx="8.5" cy="12.5" r="1.5"></circle>
+                        <circle cx="15.5" cy="12.5" r="1.5"></circle>
+                      </svg>
+                      Trang cá nhân
+                    </a>
                     <a asp-action="Index" asp-controller="Settings" class='action-item'>
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                       stroke="currentColor" width="20" height="20">

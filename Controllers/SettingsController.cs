@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BTL.NET2.Models;
 using BTL.NET2.Data;
+using BTL.NET2.Utils;
 
 namespace BTL.NET2.Controllers;
 
@@ -14,6 +15,8 @@ public class SettingsController : Controller
   private readonly ILogger<SettingsController> _logger;
 
   private readonly ApplicationDbContext _context;
+
+  Authentication auth = new Authentication();
 
   public SettingsController(ILogger<SettingsController> logger, ApplicationDbContext context)
   {
@@ -24,22 +27,20 @@ public class SettingsController : Controller
   [HttpGet]
   public IActionResult Index()
   {
-    return View();
+    if (!auth.IsAuthenticated(HttpContext))
+    {
+      return RedirectToAction("Login", "Auth");
+    }
+    return RedirectToAction(nameof(Me));
   }
 
-  [HttpPost]
-  public async Task<IActionResult> Index(User user)
+  [HttpGet]
+  public IActionResult Me()
   {
-    // if (ModelState.IsValid)
-    // {
-    //   var result = await _context.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
-    //   if (result != null)
-    //   {
-    //     user.UpdatedAt = DateTime.Now;
-    //     _context.Users.Update(user);
-    //   }
-    //   return View();
-    // }
+    if (!auth.IsAuthenticated(HttpContext))
+    {
+      return RedirectToAction("Login", "Auth");
+    }
     return View();
   }
 }
