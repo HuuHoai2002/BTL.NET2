@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "AddUser";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div>
+    <h2 class="fw-bold py-3">Thêm người dùng</h2>
+    <div class="app-container">
+        <form method="post" asp-action="AddUser" asp-controller="Auth">
+            <div class="row">
+                <div class="form-field col">
+                    <label for="email" class="field-label">Email</label>
+                    <input type="email" class="field-input" placeholder="Nhập vào địa chỉ email" id="email" name="Email"
+                        required />
+                </div>
+                <div class="form-field col">
+                    <label for="Password" class="field-label">Mật khẩu</label>
+                    <input type="password" class="field-input" placeholder="Nhập vào mật khẩu" id="Password"
+                        name="Password" required />
+                </div>
+                <div class="form-field col">
+                    <label for="Name" class="field-label">Tên</label>
+                    <input type="text" class="field-input" placeholder="Nhập vào tên" id="Name" name="Name" required />
+                </div>
+            </div>
+            <div class="row" style="margin-top: 30px;">
+                <div class="form-field col">
+                    <label for="Phone" class="field-label">Số điện thoại</label>
+                    <input type="number" class="field-input" placeholder="Nhập vào số điện thoại" id="Phone"
+                        name="Phone" />
+                </div>
+                <div class="form-field col">
+                    <label for="Address" class="field-label">Địa chỉ</label>
+                    <input type="text" class="field-input" placeholder="Nhập vào địa chỉ" id="Address" name="Address" />
+                </div>
+                <div class="form-field col">
+                    <label for="Role" class="field-label">Quyền</label>
+                    <select class="field-input" placeholder="Nhập vào địa chỉ" id="Role" name="Role" required>
+                        <option value="admin">Admin</option>
+                        <option value="user" selected>User</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 30px;">
+                <div class="form-field">
+                    <button type="submit" class="btn btn-info text-white">
+                        Thêm nguời dùng
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

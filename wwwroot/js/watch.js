@@ -31,8 +31,8 @@ const renderFrame = async () => {
 };
 
 const renderSidebar = async () => {
-  const reponse = await fetch(details_url);
-  const data = await reponse.json();
+  const response = await fetch(details_url);
+  const data = await response.json();
   const contents = `
     <div class="movie-watching-info">
       <h3 class="watching-title">${data.name || data.title}</h3>
@@ -69,6 +69,17 @@ const renderSidebar = async () => {
     }
   `;
   sidebar.innerHTML = contents;
+
+  const episode_active = $(".episode-active");
+
+  if (episode_active) {
+    episode_active.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    });
+  }
+
   setTitle(`Đang xem: ${data.name || data.title}`);
 };
 
@@ -82,4 +93,5 @@ async function Main() {
     await renderListMovie(recommendations_url, movie_recommendations);
   }
 }
-Main();
+
+window.addEventListener("DOMContentLoaded", Main);

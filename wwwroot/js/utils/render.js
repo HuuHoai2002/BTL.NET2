@@ -11,6 +11,7 @@ export const renderAppBanner = async (url, root) => {
           <div class="overlay"></div>
             <div class="app-banner-image">
               <img
+                loading="lazy"
                 src=${
                   content.backdrop_path
                     ? image_url + content.backdrop_path
@@ -21,7 +22,7 @@ export const renderAppBanner = async (url, root) => {
             </div>
             <div class="app-banner-content">
               <div class="app-banner-poster">
-                <img src=${
+                <img loading="lazy" src=${
                   content.poster_path
                     ? image_url + content.poster_path
                     : "https://cdn.dribbble.com/userupload/2905354/file/original-92212c04a044acd88c69bedc56b3dda2.png?compress=1&resize=1024x768"
@@ -91,7 +92,7 @@ export const renderListMovie = async (url, root, page) => {
               : `/Series/Detail?id=${content.id}`
           }`} class="movie-item">
               <div class="movie-image">
-                <img src=${
+                <img loading="lazy" src=${
                   content.poster_path
                     ? image_reduce + content.poster_path
                     : "https://cdn.dribbble.com/userupload/2905354/file/original-92212c04a044acd88c69bedc56b3dda2.png?compress=1&resize=1024x768"
@@ -123,7 +124,7 @@ export const renderMovieDetails = async (url, root) => {
   const contents = `
       <div class="movie-details-content">
         <div class="movie-details-image">
-          <img src=${
+          <img loading="lazy" src=${
             data.backdrop_path
               ? image_url + data.backdrop_path
               : "https://cdn.dribbble.com/userupload/2905354/file/original-92212c04a044acd88c69bedc56b3dda2.png?compress=1&resize=1024x768"
@@ -196,7 +197,7 @@ export const renderMovieRecommendations = async (url) => {
       return `
       <div class="movie-recommendations">
         <div class="movie-recommendations-item">
-          <img src=${
+          <img loading="lazy" src=${
             item.poster_path
               ? image_reduce + item.poster_path
               : "https://cdn.dribbble.com/userupload/2905354/file/original-92212c04a044acd88c69bedc56b3dda2.png?compress=1&resize=1024x768"

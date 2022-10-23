@@ -1,0 +1,113 @@
+@using BTL.NET2.Services
+@model Pagination<BTL.NET2.Models.Comment>
+
+@{
+    ViewData["Title"] = "Quản lý bình luận - trang" + " " + @Model.PageIndex;
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div>
+    <h2 class="fw-bold py-3">
+        Quản lý bình luận
+        <span class="text-primary"> trang @Model.PageIndex</span>
+    </h2>
+    <form class="app-search-content">
+        <input type="text" class="search-input" placeholder="Nhập tên bình luận của người dùng cần tìm" name="search"
+            autocomplete="off" required />
+        <button class="base-btn btn-search" type="submit" title="Tìm ngay">Tìm kiếm</button>
+    </form>
+    <table class="table align-middle table-striped table-hover text-nowrap mb-0 bg-dark">
+        <thead class="bg-dark text-white fw-bold">
+            <tr class="py-3">
+                <th>ID</th>
+                <th>Thông tin</th>
+                <th>ID phim</th>
+                <th>Nội dung bình luận</th>
+                <th>Thể loại</th>
+                <th>Ngày bình luận</th>
+                <th>Ngày Cập nhật</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.Count() > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <span class="text-muted">@item.Id</span>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
+                                style="width: 45px; height: 45px" class="rounded-circle" />
+                                    <div class="ms-3">
+                                        <div class="fw-bold text-white mb-1">@item.Author</div>
+                                        <div class="text-muted mb-0">@item.AuthorId</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="text-muted">@item.MovieId</span>
+                            </td>
+                            <td style="max-width: 250px; overflow: hidden" title="@item.Content">
+                                <p class="text-muted">@item.Content</p>
+                            </td>
+                            <td>
+                                <p class="text-primary">@item.MovieType</p>
+                            </td>
+                            <td>
+                                <span class="text-muted">@item.CreatedAt</span>
+                            </td>
+                            <td>
+                                <span class="text-muted">@item.UpdatedAt</span>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <form method="post" asp-action="Delete" asp-controller="Comment"
+                            onsubmit="return confirm('Bạn chắc chắn muốn xoá bình luận có id @item.Id chứ ?')">
+                                        <input type="hidden" name="id" value="@item.Id">
+                                        <button type="submit" class="btn btn-danger btn-sm btn-rounded">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" width="16" height="16">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                            </svg>
+                                            Xoá
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="8" class="text-danger fw-bold text-center">Chưa có bình luận nào</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+
+        if (Model.TotalPages > 1)
+        {
+            <div class="py-3 d-flex align-items-center gap-3">
+                <a asp-action="Comments_Manage" asp-route-page="@(Model.PageIndex - 1)" asp-route-limit="10"
+            class="btn btn-outline-primary @prevDisabled">
+                    Trước
+                </a>
+                <a asp-action="Comments_Manage" asp-route-page="@(Model.PageIndex + 1)" asp-route-limit="10"
+            class="btn btn-outline-primary @nextDisabled">
+                    Sau
+                </a>
+            </div>
+        }
+    }
+</div>

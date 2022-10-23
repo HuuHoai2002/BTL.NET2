@@ -2,13 +2,17 @@
   @author: Nghiêm Hữu Hoài
 *@
 
+@using Microsoft.AspNetCore.Http
+@using BTL.NET2.Utils
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>@ViewData["Title"] - BTL.NET2</title>
+  <title>@ViewData["Title"] - BTL.NET2 Nhóm 9</title>
   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
   <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true" />
@@ -45,6 +49,13 @@
             <a asp-area="" asp-controller="Home" asp-action="Index" class="content-link content-active">Trang Chủ</a>
             <a asp-area="" asp-controller="Movies" asp-action="Index" class="content-link">Phim Chiếu Rạp</a>
             <a asp-area="" asp-controller="Series" asp-action="Index" class="content-link">Phim Bộ</a>
+            @{
+              Authentication auth = new Authentication();
+              if (auth.IsAdmin(HttpContextAccessor.HttpContext))
+              {
+                <a asp-area="" asp-controller="Dashboard" asp-action="Index" class="content-link">Quản Trị</a>
+              }
+            }
           </div>
         </div>
       </div>
@@ -59,16 +70,61 @@
           </button>
         </form>
         <div class="app-header-users">
-          <a asp-action="Login" asp-controller="Auth" class="app-header-signin">Đăng Nhập</a>
-          <!-- <div class="users">
-              <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                <path
-                  d="M15 0a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm0 18.75c8.288 0 15 3.356 15 7.5V30H0v-3.75c0-4.144 6.713-7.5 15-7.5z"
-                  fill="#fff"
-                  fill-opacity="0.87"
-                ></path>
-              </svg>
-            </div> -->
+          @{
+            string email = HttpContextAccessor.HttpContext.Session.GetString("email");
+            string name = HttpContextAccessor.HttpContext.Session.GetString("username");
+            string id = HttpContextAccessor.HttpContext.Session.GetString("userid");
+            if (email != null)
+            {
+              <div class='users'>
+                <svg width='30' height='30' viewBox='0 0 30 30' fill='none'>
+                  <path
+                  d='M15 0a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm0 18.75c8.288 0 15 3.356 15 7.5V30H0v-3.75c0-4.144 6.713-7.5 15-7.5z'
+                  fill='#fff' fill-opacity='0.87'></path>
+                </svg>
+                <div class='users-content'>
+                  <div class='users-info'>
+                    Xin chào , <span>@name.Split(" ").Last().ToString()</span>
+                  </div>
+                  <div class='list-action'>
+                    <a href="/User?id=@id&show_info=true" class='action-item'>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                      fill="currentColor">
+                        <path
+                        d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8 0-1.168.258-2.275.709-3.276.154.09.308.182.456.276.396.25.791.5 1.286.688.494.187 1.088.312 1.879.312.792 0 1.386-.125 1.881-.313s.891-.437 1.287-.687.792-.5 1.287-.688c.494-.187 1.088-.312 1.88-.312s1.386.125 1.88.313c.495.187.891.437 1.287.687s.792.5 1.287.688c.178.067.374.122.581.171.191.682.3 1.398.3 2.141 0 4.411-3.589 8-8 8z">
+                        </path>
+                        <circle cx="8.5" cy="12.5" r="1.5"></circle>
+                        <circle cx="15.5" cy="12.5" r="1.5"></circle>
+                      </svg>
+                      Trang cá nhân
+                    </a>
+                    <a asp-action="Index" asp-controller="Settings" class='action-item'>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                      stroke="currentColor" width="20" height="20">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      Cài đặt
+                    </a>
+                    <a asp-action="Logout" asp-controller="Auth" class='action-item'>
+                      <svg xmlns='http://www.w3.org/2000/svg' width='16px' height='16px' viewBox='0 0 20 20'
+                      fill='currentColor'>
+                        <path fillRule='evenodd'
+                        d='M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z'
+                        clipRule='evenodd' />
+                      </svg>
+                      Đăng xuất
+                    </a>
+                  </div>
+                </div>
+              </div>
+            }
+            else
+            {
+              <a asp-action="Login" asp-controller="Auth" class="app-header-signin">Đăng Nhập</a>
+            }
+          }
         </div>
       </div>
     </div>

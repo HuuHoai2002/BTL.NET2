@@ -22,4 +22,4 @@ const Main = async () => {
   await renderListMovie(upcoming_url, movie_upcoming);
 };
 
-Main();
+window.addEventListener("DOMContentLoaded", Main);

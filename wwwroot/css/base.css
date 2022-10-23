@@ -38,7 +38,7 @@ body::-webkit-scrollbar-thumb {
   box-sizing: border-box;
   min-height: 100vh;
   color: white;
-  user-select: none;
+  /* user-select: none; */
 }
 
 .app-container {
@@ -82,4 +82,31 @@ body::-webkit-scrollbar-thumb {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
+}
+
+.app-search-input {
+  flex-shrink: 0;
+  /* width: 100%; */
+  width: 300px;
+  padding: 12px 40px 12px 20px;
+  border: 1px solid var(--border);
+  background-color: transparent;
+  color: white;
+  font-weight: 500;
+  outline: none;
+  border-radius: 20px;
+  transition: all 0.25s;
+}
+.app-header-search > button {
+  display: block;
+  text-decoration: none;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translate(0, -50%);
+  color: #4d4d4d;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
 }
