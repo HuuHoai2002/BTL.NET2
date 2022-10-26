@@ -111,17 +111,33 @@
         var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
         var nextDisabled = !Model.HasNextPage ? "disabled" : "";
 
+        var search_query = ViewData["search_query"] != null ? ViewData["search_query"].ToString() : "";
+
         if (Model.TotalPages > 1)
         {
             <div class="py-3 d-flex align-items-center gap-3">
-                <a asp-action="Users_Manage" asp-route-page="@(Model.PageIndex - 1)" asp-route-limit="10"
-            class="btn btn-outline-primary @prevDisabled">
-                    Trước
-                </a>
-                <a asp-action="Users_Manage" asp-route-page="@(Model.PageIndex + 1)" asp-route-limit="10"
+                @if (search_query != "")
+                {
+                    <a asp-action="Users_Manage" asp-route-page="@(Model.PageIndex + 1)" asp-route-limit="10"
+            asp-route-search="@search_query" class="btn btn-outline-primary @nextDisabled">
+                        Sau
+                    </a>
+                    <a asp-action="Users_Manage" asp-route-page="@(Model.PageIndex - 1)" asp-route-limit="10"
+            asp-route-search="@search_query" class="btn btn-outline-primary @prevDisabled">
+                        Trước
+                    </a>
+                }
+                else
+                {
+                    <a asp-action="Users_Manage" asp-route-page="@(Model.PageIndex + 1)" asp-route-limit="10"
             class="btn btn-outline-primary @nextDisabled">
-                    Sau
-                </a>
+                        Sau
+                    </a>
+                    <a asp-action="Users_Manage" asp-route-page="@(Model.PageIndex - 1)" asp-route-limit="10"
+            class="btn btn-outline-primary @prevDisabled">
+                        Trước
+                    </a>
+                }
             </div>
         }
     }

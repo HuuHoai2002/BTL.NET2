@@ -67,7 +67,8 @@ public class DashboardController : Controller
     {
       try
       {
-        _users = _users.Where(s => str.RemoveVietNameseAcccents(s.Name.ToLower()).Contains(str.RemoveVietNameseAcccents(search.ToLower())));
+        _users = _users.Where(s => s.Name.ToLower().Contains(search.ToLower()));
+        ViewData["search"] = search;
       }
       catch (System.Exception)
       {
@@ -104,6 +105,7 @@ public class DashboardController : Controller
       try
       {
         _comments = _comments.Where(s => s.Author.ToLower().Contains(search.ToLower()));
+        ViewData["search"] = search;
       }
       catch (System.Exception)
       {
