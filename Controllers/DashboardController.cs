@@ -17,6 +17,7 @@ public class DashboardController : Controller
   private readonly ILogger<DashboardController> _logger;
   private readonly ApplicationDbContext _context;
 
+  GenerateID generateID = new GenerateID();
   Authentication auth = new Authentication();
   StringConvert str = new StringConvert();
 
@@ -92,8 +93,6 @@ public class DashboardController : Controller
         return RedirectToAction("Index", "Home");
       }
     }
-    // var _comments = from s in _context.Comments
-    //                 select s;
     // linq query
     var _comments = _context.Comments.Select(s => s);
 
@@ -116,7 +115,62 @@ public class DashboardController : Controller
     return View(comments);
   }
 
-  [HttpGet]
+  [HttpGet] // view
+  public IActionResult AddUser()
+  {
+    if (!auth.IsAuthenticated(HttpContext))
+    {
+      return RedirectToAction("Login", "Auth");
+    }
+    else
+    {
+      if (!auth.IsAdmin(HttpContext))
+      {
+        return RedirectToAction("Index", "Home");
+      }
+    }
+    return View();
+  }
+  [HttpPost]
+  public async Task<IActionResult> AddUser(User user)
+  {
+    if (ModelState.IsValid)
+    {
+      var result = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+      if (result == null)
+      {
+        try
+        {
+          _context.Users.Add(new Models.User
+          {
+            Id = generateID.createID(),
+            Email = user.Email,
+            Password = user.Password,
+            Name = user.Name,
+            Phone = user.Phone,
+            Address = user.Address,
+            Role = user.Role,
+            CreatedAt = DateTime.Now
+          });
+          await _context.SaveChangesAsync();
+          return RedirectToAction(nameof(Users_Manage));
+        }
+        catch (System.Exception)
+        {
+          return RedirectToAction(nameof(Users_Manage));
+          throw;
+        }
+      }
+      else
+      {
+        ModelState.AddModelError("", "Email đã tồn tại");
+        return Redirect(Request.Headers["Referer"].ToString());
+      }
+    }
+    return RedirectToAction("Index", "Dashboard");
+  }
+
+  [HttpGet] // view
   public async Task<IActionResult> EditUser(string id)
   {
     if (!auth.IsAuthenticated(HttpContext))
@@ -144,22 +198,61 @@ public class DashboardController : Controller
     }
     return RedirectToAction(nameof(Users_Manage));
   }
-  [HttpGet]
-  public IActionResult AddUser()
+
+  [HttpPost]
+  public async Task<IActionResult> EditUser(User user)
   {
-    if (!auth.IsAuthenticated(HttpContext))
+    if (user == null)
     {
-      return RedirectToAction("Login", "Auth");
+      return Redirect(Request.Headers["Referer"].ToString());
     }
-    else
+    try
     {
-      if (!auth.IsAdmin(HttpContext))
+      var result = await _context.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
+      if (result == null)
       {
-        return RedirectToAction("Index", "Home");
+        return Redirect(Request.Headers["Referer"].ToString());
       }
+      result.Email = user.Email;
+      result.Name = user.Name;
+      result.Phone = user.Phone;
+      result.Address = user.Address;
+      result.Role = user.Role;
+      _context.Users.Update(result);
+      await _context.SaveChangesAsync();
+      return Redirect(Request.Headers["Referer"].ToString());
     }
-    return View();
+    catch (System.Exception)
+    {
+      return Redirect(Request.Headers["Referer"].ToString());
+      throw;
+    }
   }
+
+  [HttpPost]
+  public async Task<IActionResult> DeleteUser(string id)
+  {
+    if (id == null)
+    {
+      return RedirectToAction(nameof(Users_Manage));
+    }
+    try
+    {
+      var user = await _context.Users.FindAsync(id);
+      if (user == null)
+      {
+        return RedirectToAction(nameof(Users_Manage));
+      }
+      _context.Users.Remove(user);
+      await _context.SaveChangesAsync();
+      return RedirectToAction(nameof(Users_Manage));
+    }
+    catch (Exception)
+    {
+      return RedirectToAction(nameof(Users_Manage));
+    }
+  }
+
 
   [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
   public IActionResult Error()

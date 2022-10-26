@@ -8,7 +8,7 @@
 <div>
     <h2 class="fw-bold py-3">Cập nhật thông tin người dùng</h2>
     <div class="app-container">
-        <form method="post" asp-action="UpdateInfo" asp-controller="Auth">
+        <form method="post" asp-action="EditUser" asp-controller="Dashboard">
             <div class="row">
                 <input type="hidden" value="@Html.DisplayFor(model => model.Id)" name="Id">
                 <div class="form-field col">

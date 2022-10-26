@@ -31,16 +31,103 @@ public class SettingsController : Controller
     {
       return RedirectToAction("Login", "Auth");
     }
-    return RedirectToAction(nameof(Me));
+    return View();
   }
 
   [HttpGet]
-  public IActionResult Me()
+  public async Task<IActionResult> Me()
+  {
+    string id = HttpContext.Session.GetString("userid") ?? "";
+    if (id == "")
+    {
+      return RedirectToAction("Login", "Auth");
+    }
+    try
+    {
+      var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+      if (user == null)
+      {
+        return RedirectToAction("Login", "Auth");
+      }
+      return View(user);
+    }
+    catch (System.Exception)
+    {
+      return View();
+      throw;
+    }
+  }
+  [HttpPost]
+  public async Task<IActionResult> Me(User user)
+  {
+    string id = HttpContext.Session.GetString("userid") ?? "";
+    if (user == null || id == "")
+    {
+      return RedirectToAction("Login", "Auth");
+    }
+    try
+    {
+      var result = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+      if (result == null)
+      {
+        return RedirectToAction("Login", "Auth");
+      }
+      result.Name = user.Name;
+      result.Phone = user.Phone;
+      result.Address = user.Address;
+      _context.Users.Update(result);
+      await _context.SaveChangesAsync();
+      TempData["Success"] = "Cập nhật thông tin thành công";
+      return RedirectToAction(nameof(Me));
+    }
+    catch (System.Exception)
+    {
+      return View();
+      throw;
+    }
+  }
+
+  [HttpGet]
+  public IActionResult ChangePassword()
   {
     if (!auth.IsAuthenticated(HttpContext))
     {
       return RedirectToAction("Login", "Auth");
     }
     return View();
+  }
+
+  [HttpPost]
+  public async Task<IActionResult> ChangePassword(string NewPassword, string OldPassword, string ConfirmPassword)
+  {
+    string id = HttpContext.Session.GetString("userid") ?? "";
+    if (id == "")
+    {
+      return RedirectToAction("Login", "Auth");
+    }
+    if (NewPassword != ConfirmPassword)
+    {
+      ModelState.AddModelError("ConfirmPassword", "Mật khẩu xác nhận không khớp với mật khẩu mới");
+      return View();
+    }
+    try
+    {
+      var result = await _context.Users.FirstOrDefaultAsync(u => u.Id == id && u.Password == OldPassword);
+      if (result == null)
+      {
+        ModelState.AddModelError("OldPassword", "Mật khẩu cũ không đúng");
+        return View();
+      }
+      result.Password = NewPassword;
+      _context.Users.Update(result);
+      await _context.SaveChangesAsync();
+      TempData["Success"] = "Đổi mật khẩu thành công";
+      return RedirectToAction(nameof(Me));
+    }
+    catch (System.Exception)
+    {
+      return RedirectToAction(nameof(Me));
+      throw;
+    }
   }
 }

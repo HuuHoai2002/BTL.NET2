@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0UYmp7ojZFsMDjlJbqU45N4Pl4aRVvWx1xatK5ivy2k=",
+  "Hash": "MM1iHAzH0fiwdIWPFPUdT16Xd0216veDPZjhWF5xH2E=",
   "Source": "BTL.NET2",
   "BasePath": "_content/BTL.NET2",
   "Mode": "Default",
@@ -100,6 +100,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icons\\logo.png"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\icons\\password.png",
+      "SourceId": "BTL.NET2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\",
+      "BasePath": "_content/BTL.NET2",
+      "RelativePath": "icons/password.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icons\\password.png"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\icons\\user.png",
+      "SourceId": "BTL.NET2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\",
+      "BasePath": "_content/BTL.NET2",
+      "RelativePath": "icons/user.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icons\\user.png"
     },
     {
       "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\js\\common\\index.js",
@@ -304,6 +338,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\utils\\setTitle.js"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\js\\utils\\showPassword.js",
+      "SourceId": "BTL.NET2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\",
+      "BasePath": "_content/BTL.NET2",
+      "RelativePath": "js/utils/showPassword.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\utils\\showPassword.js"
     },
     {
       "Identity": "C:\\Users\\Admin\\OneDrive\\BTL\\BTL.NET2\\wwwroot\\js\\utils\\toggle.js",

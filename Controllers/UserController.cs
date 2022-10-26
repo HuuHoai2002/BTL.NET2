@@ -43,6 +43,7 @@ public class UserController : Controller
       throw;
     }
   }
+
   [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
   public IActionResult Error()
   {
