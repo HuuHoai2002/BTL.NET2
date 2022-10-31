@@ -35,13 +35,17 @@
 .content-link {
   display: block;
   text-decoration: none;
-  color: white;
+  color: white !important;
   font-weight: 500;
   padding: 12px 0;
   transition: all 0.25s;
 }
-.content-link.active {
-  color: var(--red);
+.content-link:hover {
+  opacity: 0.6;
+}
+
+.content-link-active {
+  color: #12a7ff !important;
 }
 .app-header-right {
   flex: 1;

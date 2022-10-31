@@ -140,6 +140,20 @@
   </footer>
   <script src="~/lib/jquery/dist/jquery.min.js"></script>
   <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const pathName = window.location.pathname;
+
+    const links = document.querySelectorAll(".content-link");
+
+    links.forEach((link) => {
+      if (link.getAttribute("href") === pathName) {
+        link.classList.add("content-link-active");
+      }
+    });
+
+    console.log(pathName)
+  </script>
   @await RenderSectionAsync("Scripts", required: false)
 </body>
 

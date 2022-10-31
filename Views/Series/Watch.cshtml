@@ -57,7 +57,7 @@
                 if (email != null)
                 {
                     <div class="users">
-                        @* <img src="<?= $_SESSION['user']['user_avatar'] ?>" alt="" class="user-avatar"> *@
+                        <img src="~/icons/default-avatar.png" alt="" class="user-avatar">
                     </div>
                     <div class="input-comments">
                         <textarea name="Content" placeholder="Viết bình luận ..." required></textarea>
@@ -87,7 +87,7 @@
                 <div class="comment">
                     <div class="comment-content">
                         <div class="comment-author">
-                            <img src="' . $comment['user_avatar'] . '" alt="" class="user-avatar">
+                            <img src="~/icons/default-avatar.png" alt="" class="user-avatar">
                         </div>
                         <div class="comment-text">
                             <div class="comment-author">

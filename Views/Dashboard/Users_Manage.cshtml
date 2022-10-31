@@ -10,7 +10,7 @@
     <h2 class="fw-bold py-3">Quản lý người dùng</h2>
     <form class="app-search-content">
         <input type="text" class="search-input" placeholder="Nhập tên của người dùng cần tìm" name="search"
-            autocomplete="off" required />
+            autocomplete="off" value='@ViewData["search"]' required />
         <button class="base-btn btn-search" type="submit" title="Tìm ngay">Tìm kiếm</button>
     </form>
     <table class="table align-middle table-hover text-nowrap mb-0 bg-dark">
@@ -98,6 +98,12 @@
                             </td>
                         </tr>
                     }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="8" class="text-danger fw-bold text-center">Không tìm thấy người dùng nào</td>
+                    </tr>
                 }
             }
         </tbody>
