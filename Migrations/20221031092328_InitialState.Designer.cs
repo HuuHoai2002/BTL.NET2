@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BTL.NET2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221020094144_Initial_State")]
-    partial class Initial_State
+    [Migration("20221031092328_InitialState")]
+    partial class InitialState
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,18 +67,25 @@ namespace BTL.NET2.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Phone")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

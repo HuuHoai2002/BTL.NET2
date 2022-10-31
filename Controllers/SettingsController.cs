@@ -75,6 +75,7 @@ public class SettingsController : Controller
       result.Name = user.Name;
       result.Phone = user.Phone;
       result.Address = user.Address;
+      result.UpdatedAt = DateTime.Now;
       _context.Users.Update(result);
       await _context.SaveChangesAsync();
       TempData["Success"] = "Cập nhật thông tin thành công";
@@ -122,11 +123,11 @@ public class SettingsController : Controller
       _context.Users.Update(result);
       await _context.SaveChangesAsync();
       TempData["Success"] = "Đổi mật khẩu thành công";
-      return RedirectToAction(nameof(Me));
+      return RedirectToAction(nameof(ChangePassword));
     }
     catch (System.Exception)
     {
-      return RedirectToAction(nameof(Me));
+      return RedirectToAction(nameof(ChangePassword));
       throw;
     }
   }

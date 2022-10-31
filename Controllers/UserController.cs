@@ -26,20 +26,20 @@ public class UserController : Controller
   {
     if (id == null)
     {
-      return Redirect(Request.Headers["Referer"].ToString());
+      return NotFound();
     }
     try
     {
       var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
       if (user == null)
       {
-        return Redirect(Request.Headers["Referer"].ToString());
+        return NotFound();
       }
       return View(user);
     }
     catch (System.Exception)
     {
-      return Redirect(Request.Headers["Referer"].ToString());
+      return NotFound();
       throw;
     }
   }

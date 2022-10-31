@@ -65,18 +65,25 @@ namespace BTL.NET2.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Phone")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

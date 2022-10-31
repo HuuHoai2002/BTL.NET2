@@ -145,14 +145,11 @@ public class DashboardController : Controller
         {
           _context.Users.Add(new Models.User
           {
-            Id = generateID.createID(),
             Email = user.Email,
             Password = user.Password,
             Name = user.Name,
             Phone = user.Phone,
             Address = user.Address,
-            Role = user.Role,
-            CreatedAt = DateTime.Now
           });
           await _context.SaveChangesAsync();
           return RedirectToAction(nameof(Users_Manage));
@@ -220,6 +217,7 @@ public class DashboardController : Controller
       result.Phone = user.Phone;
       result.Address = user.Address;
       result.Role = user.Role;
+      result.UpdatedAt = DateTime.Now;
       _context.Users.Update(result);
       await _context.SaveChangesAsync();
       return Redirect(Request.Headers["Referer"].ToString());

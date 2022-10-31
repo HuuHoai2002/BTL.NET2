@@ -89,7 +89,6 @@ public class AuthController : Controller
             Name = user.Name,
             Phone = user.Phone,
             Address = user.Address,
-            CreatedAt = DateTime.Now
           });
           await _context.SaveChangesAsync();
           return RedirectToAction(nameof(Login));

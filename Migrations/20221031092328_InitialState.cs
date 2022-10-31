@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BTL.NET2.Migrations
 {
-    public partial class Initial_State : Migration
+    public partial class InitialState : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,13 +32,14 @@ namespace BTL.NET2.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
-                    Email = table.Column<string>(type: "TEXT", nullable: true),
-                    Password = table.Column<string>(type: "TEXT", nullable: true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    Password = table.Column<string>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
                     Phone = table.Column<string>(type: "TEXT", nullable: true),
                     Address = table.Column<string>(type: "TEXT", nullable: true),
-                    Role = table.Column<string>(type: "TEXT", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Role = table.Column<string>(type: "TEXT", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
