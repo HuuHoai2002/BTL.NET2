@@ -5,6 +5,11 @@
 }
 
 <div class="app-container py-5">
+    <div class="bread-cumb">
+        <a asp-action="Index" class="item">Cài đặt</a>
+        <span> &gt </span>
+        <a href="#" class="item current">Thông tin cá nhân</a>
+    </div>
     <form method="post" asp-action="Me" autocomplete="off" class="app-form mx-auto">
         <div class="app-form-head">
             <h2 class="form-heading">Cập nhật thông tin cá nhân</h2>

@@ -1063,3 +1063,20 @@
   justify-content: center;
   align-items: center;
 }
+
+.bread-cumb {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.bread-cumb > .item {
+  display: block;
+  font-size: 18px;
+  text-decoration: none;
+  transition: all 0.5s;
+  color: white;
+}
+.bread-cumb > .item.current {
+  color: var(--blue);
+}

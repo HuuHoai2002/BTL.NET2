@@ -162,8 +162,8 @@ public class DashboardController : Controller
       }
       else
       {
-        ModelState.AddModelError("", "Email đã tồn tại");
-        return Redirect(Request.Headers["Referer"].ToString());
+        TempData["error"] = "Email đã tồn tại";
+        return RedirectToAction(nameof(AddUser));
       }
     }
     return RedirectToAction("Index", "Dashboard");
