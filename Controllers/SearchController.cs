@@ -17,8 +17,9 @@ public class SearchController : Controller
   }
 
   [HttpGet]
-  public IActionResult Index()
+  public IActionResult Index([FromQuery] string keyword)
   {
+    TempData["keyword"] = keyword;
     return View();
   }
 }

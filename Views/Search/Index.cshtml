@@ -4,7 +4,8 @@
 
 <div class="app-search app-container">
     <form action="/Search" class="app-search-content">
-        <input type="text" class="search-input" placeholder="Tìm kiếm những bộ phim mà bạn yêu thích" name="keyword" autocomplete="off" required />
+        <input type="text" class="search-input" placeholder="Tìm kiếm những bộ phim mà bạn yêu thích" name="keyword"
+            autocomplete="off" value='@TempData["keyword"]' required />
         <button class="base-btn btn-search" type="submit" title="Tìm phim ngay">Tìm kiếm</button>
     </form>
     <div class="search-content">
@@ -15,5 +16,5 @@
 
 
 @section Scripts {
-    <script type="module" src="~/js/search.js" asp-append-version="true"></script>
+<script type="module" src="~/js/search.js" asp-append-version="true"></script>
 }

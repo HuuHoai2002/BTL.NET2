@@ -50,13 +50,8 @@ public class AuthController : Controller
           HttpContext.Session.SetString("email", result.Email);
           HttpContext.Session.SetString("userid", result.Id.ToString());
           HttpContext.Session.SetString("role", result.Role ?? "user");
-          if (redirect != null)
-          {
-            return Redirect(Request.Headers["Referer"].ToString());
-          }
-          return RedirectToAction("Index", "Home");
         }
-        return RedirectToAction("Index", "Home");
+      return RedirectToAction("Index", "Home");
       }
       else
       {

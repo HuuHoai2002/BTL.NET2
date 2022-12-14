@@ -10,17 +10,18 @@
     <div class="app-user-banner">
         <div class="user-profile">
             <div class="user-profile-image">
-                <img
-                    src="https://cdn.dribbble.com/users/2400293/screenshots/19060197/media/82d672bd58929b313f4805df5e48d586.png" />
+                <img src="~/icons/default-avatar.png" />
             </div>
             <div class="user-profile-name">
                 @{
                     string id = HttpContextAccessor.HttpContext.Session.GetString("userid");
                     if (id == Model.Id)
                     {
-                        <h1>@Html.DisplayFor(model => model.Name)
-                            <span class="text-info">(Tôi)</span>
-                        </h1>
+                        <div class="author">
+                            <h1>@Html.DisplayFor(model => model.Name)
+                            </h1>
+                            <img src="~/icons/vip-member.png" class="vip-member-img" alt="">
+                        </div>
                     }
                     else
                     {

@@ -1,5 +1,3 @@
-@using Microsoft.AspNetCore.Http
-@using BTL.NET2.Utils
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 <!DOCTYPE html>
@@ -72,7 +70,8 @@
         <a href="#"
           class="d-flex align-items-center justify-content-center p-3 link-light text-decoration-none dropdown-toggle"
           id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://github.com/mdo.png" alt="mdo" width="30" height="30" class="rounded-circle">
+          <img src="~/icons/default-avatar.png" width="30" height="30" style="object-fit: cover;"
+            class="rounded-circle">
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser3">
           <li><a class="dropdown-item" asp-action="Index" asp-controller="Home">Trang chủ</a></li>
@@ -101,8 +100,7 @@
     const currentUrl = window.location.pathname
     navlist.forEach((item) => {
       if (item.href.includes(currentUrl.split('/')[2])) {
-        @* document.querySelector('.nav-link.active').classList.remove('active') *@
-          item.classList.add('active')
+        item.classList.add('active')
       }
     })
   </script>

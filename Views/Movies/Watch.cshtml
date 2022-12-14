@@ -92,7 +92,16 @@
                         </div>
                         <div class="comment-text">
                             <div class="comment-author">
-                                <a href="/User?id=@item.AuthorId&show_info=true" class="author-name">@item.Author</a>
+                                <div class="comment-author-info">
+                                    <a href="/User?id=@item.AuthorId&show_info=true" class="author-name">@item.Author</a>
+                                    @{
+                                        string id = HttpContextAccessor.HttpContext.Session.GetString("userid");
+                                        if (id == item.AuthorId)
+                                        {
+                                            <img src="~/icons/vip-member.png" width="16" height="16" alt="">
+                                        }
+                                    }
+                                </div>
                                 <span class="comment-date">
                                     @item.CreatedAt
                                 </span>
